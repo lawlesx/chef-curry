@@ -2,19 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
+@font-face {
+  font-family: 'Maves Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Maves Regular'), url('../public/Fonts/Maves-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Adam';
+  font-style: normal;
+  font-weight: light;
+  src: local('Adam'), url('../public/Fonts/Adam-Light.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Adam';
+  font-style: normal;
+  font-weight: medium;
+  src: local('Adam'), url('../public/Fonts/Adam-Medium.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'Adam';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Adam'), url('../public/Fonts/Adam-Bold.ttf') format("truetype");
+}
+
+html, body {
+  background-color: #292531;
+  font-family: 'Adam';
+}
+
+
+* {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  box-sizing: border-box;
+  /* outline: wheat solid 1px; */
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+h1{
+  font-family: 'Maves Regular';
 }
+
+
