@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Cards from '../components/Cards'
+import { motion } from 'framer-motion'
 
 export default function Home() {
   return (
@@ -9,7 +10,12 @@ export default function Home() {
         <meta name="description" content="Recipe Book" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-full min-h-[80vh] flex justify-center flex-col">
+      <motion.div
+        initial={{ opacity: 0, x: '50vh' }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="w-full min-h-[80vh] flex justify-center flex-col"
+      >
         <h1 className="uppercase text-tpurple text-[10rem]">Chef Curry</h1>
         <div className="w-full flex justify-end">
           <div className="w-1/2 flex flex-col items-end">
@@ -20,7 +26,7 @@ export default function Home() {
             <h2 className="text-2xl text-white font-bold">Gordan Ramsey</h2>
           </div>
         </div>
-      </div>
+      </motion.div>
       {/* --------------------------------- Explore -------------------------------- */}
       <div className="my-20 w-full flex flex-col items-center">
         <h1

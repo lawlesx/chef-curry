@@ -1,19 +1,27 @@
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export const Navbar = () => {
   return (
-    <div className="w-full flex justify-between items-center py-4">
+    <motion.div
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="w-full flex justify-between items-center py-4"
+    >
       <h1 className="uppercase text-tpurple text-4xl">Chef Curry</h1>
       <section className="flex justify-between w-1/4 items-center">
         <NavItems href="/">Home</NavItems>
         <NavItems href="#explore">Explore</NavItems>
         <Link href="/add">
-          <a className="p-2 px-4 bg-button text-white font-bold text-xl">
+          <motion.a
+            whileHover={{ scale: 1.05, backgroundColor: '#42DDAE' }}
+            className="p-2 px-4 bg-button text-white font-bold text-xl cursor-pointer"
+          >
             Add A Recipe
-          </a>
+          </motion.a>
         </Link>
       </section>
-    </div>
+    </motion.div>
   )
 }
 

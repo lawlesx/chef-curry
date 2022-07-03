@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Add = () => {
   const [title, setTitle] = useState()
@@ -22,12 +23,13 @@ const Add = () => {
           placeholder="Pour 1L of water to 1kg of flour ......"
           onChange={(e) => setRecipe(e.target.value)}
         />
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05, backgroundColor: '#42DDAE' }}
           className="p-2 bg-button text-white font-bold text-xl max-w-max self-end mt-4"
           onClick={() => console.log({ title, recipe })}
         >
           Upload Recipe
-        </button>
+        </motion.button>
       </div>
     </div>
   )
