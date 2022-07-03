@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const Cards = ({ title, view, color }) => {
+const Cards = ({ title, href, color }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.01, backgroundColor: '#F876E3' }}
@@ -12,7 +12,7 @@ const Cards = ({ title, view, color }) => {
         <h2 className="text-[4rem] text-white truncate w-3/5 font-bold uppercase">
           {title}
         </h2>
-        <Link href={view} passHref>
+        <Link href={href} passHref>
           <motion.a
             whileHover={{ backgroundColor: '#42DDAE' }}
             className="p-2 bg-button text-white font-bold text-xl absolute bottom-0 right-0 px-4"

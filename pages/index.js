@@ -40,7 +40,7 @@ export default function Home() {
             <Cards
               title="Vada Pav"
               //TODO: Change to dynamic [id]
-              view="/vadapav"
+              href="/vadapav"
               color={i % 2 == 0 ? 'cyellow' : 'tpurple'}
               key={i}
             />
