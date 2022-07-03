@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Cards from '../components/Cards'
 
 export default function Home() {
   return (
@@ -18,6 +19,22 @@ export default function Home() {
             </p>
             <h2 className="text-2xl text-white font-bold">Gordan Ramsey</h2>
           </div>
+        </div>
+      </div>
+      {/* --------------------------------- Explore -------------------------------- */}
+      <div className="my-20 w-full flex flex-col items-center">
+        <h1 className="text-white text-4xl border-b-2 border-button">
+          Explore your recipies
+        </h1>
+        <div className="w-full flex flex-col items-center gap-4 p-20">
+          {[...Array(5).keys()].map((recipe, i) => (
+            <Cards
+              title="Vada Pav"
+              view="/"
+              color={i % 2 == 0 ? 'cyellow' : 'tpurple'}
+              key={i}
+            />
+          ))}
         </div>
       </div>
     </div>
