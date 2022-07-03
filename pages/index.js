@@ -23,14 +23,18 @@ export default function Home() {
       </div>
       {/* --------------------------------- Explore -------------------------------- */}
       <div className="my-20 w-full flex flex-col items-center">
-        <h1 className="text-white text-4xl border-b-2 border-button">
+        <h1
+          className="text-white text-4xl border-b-2 border-button"
+          id="explore"
+        >
           Explore your recipies
         </h1>
         <div className="w-full flex flex-col items-center gap-4 p-20">
           {[...Array(5).keys()].map((recipe, i) => (
             <Cards
               title="Vada Pav"
-              view="/"
+              //TODO: Change to dynamic [id]
+              view="/vadapav"
               color={i % 2 == 0 ? 'cyellow' : 'tpurple'}
               key={i}
             />
