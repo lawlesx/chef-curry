@@ -1,8 +1,31 @@
 import Head from 'next/head'
 import Cards from '../components/Cards'
 import { motion } from 'framer-motion'
+import { db } from '../firebaseConfig'
+import { collection, getDocs } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
+
+const dbInstance = collection(db, 'recipes')
 
 export default function Home() {
+  useEffect(() => {
+    getRecipes();
+  }, [])
+  const [recipesArray, setRecipesArray] = useState([]);
+
+  const getRecipes = () => {
+    getDocs(dbInstance).then((data) => {
+      console.log(data.docs.map((item) => {
+        return { ...item.data(), id: item.id }
+      }));
+      setRecipesArray(data.docs.map((item) => {
+        return { ...item.data(), id: item.id }
+      }));
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
     <div>
       <Head>
@@ -36,11 +59,11 @@ export default function Home() {
           Explore your recipies
         </h1>
         <div className="w-full flex flex-col items-center gap-4 p-20">
-          {[...Array(5).keys()].map((recipe, i) => (
+          {recipesArray.map((recipe, i) => (
             <Cards
-              title="Vada Pav"
+              title={recipe.title}
               //TODO: Change to dynamic [id]
-              href="/vadapav"
+              href={`/${recipe.id}`}
               color={i % 2 == 0 ? 'cyellow' : 'tpurple'}
               key={i}
             />
