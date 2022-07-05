@@ -9,21 +9,27 @@ const dbInstance = collection(db, 'recipes')
 
 export default function Home() {
   useEffect(() => {
-    getRecipes();
+    getRecipes()
   }, [])
-  const [recipesArray, setRecipesArray] = useState([]);
+  const [recipesArray, setRecipesArray] = useState([])
 
   const getRecipes = () => {
-    getDocs(dbInstance).then((data) => {
-      console.log(data.docs.map((item) => {
-        return { ...item.data(), id: item.id }
-      }));
-      setRecipesArray(data.docs.map((item) => {
-        return { ...item.data(), id: item.id }
-      }));
-    }).catch((err) => {
-      console.log(err)
-    })
+    getDocs(dbInstance)
+      .then((data) => {
+        console.log(
+          data.docs.map((item) => {
+            return { ...item.data(), id: item.id }
+          }),
+        )
+        setRecipesArray(
+          data.docs.map((item) => {
+            return { ...item.data(), id: item.id }
+          }),
+        )
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
@@ -64,7 +70,7 @@ export default function Home() {
               title={recipe.title}
               //TODO: Change to dynamic [id]
               href={`/${recipe.id}`}
-              color={i % 2 == 0 ? 'cyellow' : 'tpurple'}
+              index={i}
               key={i}
             />
           ))}
