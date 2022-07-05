@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { db } from '../firebaseConfig'
-import { getDoc } from 'firebase/firestore'
+import { doc, getDoc } from 'firebase/firestore'
 
 export async function getServerSideProps(context) {
   /* --------------------------- Use Firestore here --------------------------- */
@@ -16,8 +16,8 @@ export async function getServerSideProps(context) {
     image: ""
   } 
   try {
-    const doc = await getDoc(db, 'recipes', id)
-    const data = doc.data()
+    const docR = await getDoc(doc(db, 'recipes', id))
+    const data = docR.data()
     propVals.title = data.title
     propVals.details = data.details
     propVals.image = data.image
