@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
-import Image from 'next/image'
 import { db } from '../firebaseConfig'
 import { doc, getDoc } from 'firebase/firestore'
+import { motion } from 'framer-motion'
 
 export async function getServerSideProps(context) {
   /* --------------------------- Use Firestore here --------------------------- */
@@ -36,12 +36,27 @@ const id = (props) => {
   console.log({ props })
   return (
     <div className="my-20">
-      <h1 className="text-white text-4xl border-b-2 border-button mb-4">
+      <motion.h1
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: 'spring' }}
+        className="text-white text-4xl border-b-2 border-button mb-4"
+      >
         {props.title}
-      </h1>
+      </motion.h1>
       <div className="flex w-full justify-between">
-        <p className="text-lg text-tpurple w-1/2">{props.details}</p>
-        <img
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+          className="text-lg text-tpurple w-1/2"
+        >
+          {props.details}
+        </motion.p>
+        <motion.img
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: 'spring' }}
           src={props.image}
           alt="Recipe Image"
           className="w-[30rem] h-[30rem] object-cover"

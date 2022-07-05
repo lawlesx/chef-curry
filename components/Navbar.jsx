@@ -11,7 +11,7 @@ export const Navbar = () => {
       <h1 className="uppercase text-tpurple text-4xl">Chef Curry</h1>
       <section className="flex justify-between w-1/4 items-center">
         <NavItems href="/">Home</NavItems>
-        <NavItems href="#explore">Explore</NavItems>
+        <NavItems href="/#explore">Explore</NavItems>
         <Link href="/add">
           <motion.a
             whileHover={{ scale: 1.05, backgroundColor: '#42DDAE' }}
@@ -27,7 +27,12 @@ export const Navbar = () => {
 
 const NavItems = ({ children, href }) => (
   <Link href={href}>
-    <a className="text-xl text-white cursor-pointer font-medium">{children}</a>
+    <motion.a
+      whileHover={{ scale: 1.05, color: '#42DDAE' }}
+      className="text-xl text-white ease-in-out cursor-pointer font-medium"
+    >
+      {children}
+    </motion.a>
   </Link>
 )
 
