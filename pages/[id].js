@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import Image from 'next/image'
 import { db } from '../firebaseConfig'
@@ -9,12 +10,12 @@ export async function getServerSideProps(context) {
   // const res = await fetch(`https://.../data`)
   // const data = await res.json()
 
-  const { id } = context.query;
+  const { id } = context.query
   let propVals = {
-    title: "",
-    details: "",
-    image: ""
-  } 
+    title: '',
+    details: '',
+    image: '',
+  }
   try {
     const docR = await getDoc(doc(db, 'recipes', id))
     const data = docR.data()
@@ -32,24 +33,19 @@ export async function getServerSideProps(context) {
   }
 }
 const id = (props) => {
+  console.log({ props })
   return (
     <div className="my-20">
       <h1 className="text-white text-4xl border-b-2 border-button mb-4">
         {props.title}
       </h1>
       <div className="flex w-full justify-between">
-        <p className="text-lg text-tpurple w-1/2">
-          {props.details}
-        </p>
-        <div className="relative w-[30rem] h-[30rem]">
-          <Image
-            src={props.imageSrc}
-            objectFit="cover"
-            layout="fill"
-            alt="Recipe Image"
-          />
-          {/* <img src={recipeDetails.image} alt="Recipe Image" style={{ object-fit: "cover"}} /> */}
-        </div>
+        <p className="text-lg text-tpurple w-1/2">{props.details}</p>
+        <img
+          src={props.image}
+          alt="Recipe Image"
+          className="w-[30rem] h-[30rem] object-cover"
+        />
       </div>
     </div>
   )
