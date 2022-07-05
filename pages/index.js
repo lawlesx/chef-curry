@@ -41,7 +41,7 @@ export default function Home() {
               title="Vada Pav"
               //TODO: Change to dynamic [id]
               href="/vadapav"
-              color={i % 2 == 0 ? 'cyellow' : 'tpurple'}
+              index={i}
               key={i}
             />
           ))}
